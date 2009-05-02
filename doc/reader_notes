@@ -1,0 +1,21 @@
+Want ~25 lines per page, with ~10 paragraphs = 32.5 normal lines
+~12 words per line
+
+Each paragraph is 1.75 normal lines 
+
+Algorithmish: 
+
+Open file
+put 32 lines into local buffer
+for each line
+  pull from buffer
+  count words 
+  wrapped_lines_per = round( words/12.0 )
+  if (wrapped_lines + wrapped_lines_per )
+    wrapped_lines += wrapped_lines_per
+  else
+    remaining_space = 32 - wrapped_lines
+    pull off lines that we need 
+    put the rest back in buffer
+  break if no remaining space  
+  
