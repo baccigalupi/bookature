@@ -1,3 +1,3 @@
-class User < ActiveRecord::Base
+class User < SocialData
   include Clearance::User
 end
