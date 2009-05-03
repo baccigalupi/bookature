@@ -1,3 +1,8 @@
+<div class="cover">
+  <%= book_art( @book ) %>
+</div> 
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<div class="discription">
+  <h1><%= @book.title %></h1>
+  <h2><span class="by">by</span> <span class="author">Lawrence James</span></h2>
+</div>

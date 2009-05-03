@@ -1,11 +1,23 @@
-<h1>New book</h1>
+<div class="content">
+  <h1>Upload A New Book</h1>
+  <% form_for(@book, :html => { :multipart => true }) do |form| %>
+    <%= form.error_messages %>
+    <h4>Book Title</h4>
+    <%= form.text_field :title %>
+    
+    <h4>Artwork</h4>
+    <p>
+      Book cover artwork should a web viewable image: jpg, gif or png. Files should be smaller than 10 Mb.<br/>
+      <%= form.file_field :art %>
+    </p>
+    <h4>Book File</h4>
+    <p>
+      Book file format should be plain text: txt. Other formats may be supported in the future.<br/>
+      <%= form.file_field :book %>
+    </p>
+    <p>
+      <%= form.submit 'Create' %>
+    </p>
+  <% end %> 
+</div>
 
-<% form_for(@book) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', books_path %>
