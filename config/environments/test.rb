@@ -31,6 +31,7 @@ config.gem 'faker'
 config.gem 'notahat-machinist', :lib => 'machinist', :source => 'http://gems.github.com'
 config.gem 'cucumber'
 config.gem 'webrat'
+config.gem 'nokogiri'
 config.gem "thoughtbot-factory_girl",:lib    => "factory_girl", :source => "http://gems.github.com"
 
 HOST = "localhost"
