@@ -1,0 +1,47 @@
+  <div class="spread">
+    <div class="page left_page">
+      <div class="header">
+        <h1> 
+          <span class="title"><%= @book.title %></span> 
+          <span class="by">by</span>
+          <span class="author"><%= @book.author_name %></span>
+        </h1>
+      </div> 
+      <div class="content">
+        <%= @page1.body %>
+      </div>
+    </div>  
+
+    <div class="page right_page"> 
+    <div class="header">
+      <ul>
+        <% if @page1.number > 1 -%>
+          <li>
+            <small>
+              <%= link_to '<< Previous', "/books/#{@book.id}/pages/#{@page1.number - 2}" %>
+            </small>  
+          </li>
+        <% end -%>  
+        <li>Page <%= [@page1.number + 1, @book.total_pages].min %> of <%= @book.total_pages %></li>
+        <% if @page1.number + 1 <= @book.total_pages -%>
+          <li>
+            <small><%= link_to 'Next >>', "/books/#{@book.id}/pages/#{@page1.number + 2}" %></small>
+          </li>
+        <% end -%>
+        <li>&nbsp; | &nbsp;</li>
+        <li>
+           <form action="/books/<%= @book.id %>/pages">
+             <small>Jump to page <input type="text" size="3" name="id"/></small>
+             <input type='submit' value="Go">
+           </form>
+        </li> 
+      </ul>
+    </div>
+    <div class="content">
+       <%= @page2 ? @page2.body : '' %>
+    </div>
+  </div> 
+</div> 
+<div class="tools">
+  &copy;<%= @book.created_at.year %> <%= @book.author_name %>, All rights reserved.
+</div>         

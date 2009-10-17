@@ -1,18 +1,25 @@
-<h1>Listing books</h1>
+<h1>Available Books</h1>
 
 <table>
   <tr>
   </tr>
 
 <% @books.each do |book| %>
-  <tr>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr> 
+    <td>
+      <%= link_to( book.title, book_page_path( :book_id => book.id, :id => 1), :class => 'title' ) %>, 
+      by <span class="author"><%= book.author_name %></span>
+    </td>
+    <td><%= link_to 'Read', book_page_path( :book_id => book.id, :id => 1) %></td>
+    <% if current_user && current_user.id == book.owner_id -%>
+      <td><%= link_to 'Edit', edit_book_path( book ) %></td>
+    <% end -%>  
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New book', new_book_path %>
+<% if current_user -%>
+  <%= link_to 'New book', new_book_path %> 
+<% end -%>  

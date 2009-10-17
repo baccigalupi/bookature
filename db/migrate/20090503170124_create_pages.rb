@@ -1,7 +1,7 @@
 class CreatePages < ActiveRecord::Migration
   def self.up
     create_table :pages do |t|
-      t.integer :book_it
+      t.integer :book_id
       t.integer :number
       t.text :body
       t.text :body_html

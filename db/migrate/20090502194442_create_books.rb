@@ -1,9 +1,10 @@
 class CreateBooks < ActiveRecord::Migration
   def self.up
     create_table :books do |t|
-      t.integer :user_id
+      t.integer :owner_id
       t.string  :title
       t.text :summary
+      t.string :author_name
       
       t.string  :book_file_name
       t.string  :book_content_type

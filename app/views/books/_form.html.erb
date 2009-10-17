@@ -1,0 +1,22 @@
+  <% form_for(@book, :html => { :multipart => true }) do |form| %>
+    <%= form.error_messages %>
+    <h4>Book Title</h4>
+    <%= form.text_field :title %>
+    
+    <h4>Author(s)</h4>
+    <%= form.text_field :author_name %>
+    
+    <h4>Artwork (Optional)</h4>
+    <p>
+      Book cover artwork should a web viewable image: jpg, gif or png. Files should be smaller than 10 Mb.<br/>
+      <%= form.file_field :art %>
+    </p>
+    <h4>Book File</h4>
+    <p>
+      Book file format should be plain text: txt. Also, the text encoding should be utf8. Non-utf8 characters will not render correctly in html. Other formats may be supported in the future.<br/>
+      <%= form.file_field :book %>
+    </p>
+    <p>
+      <%= form.submit 'Create' %>
+    </p>
+  <% end %>

@@ -18,6 +18,10 @@ ins { text-decoration: none; }
 del { text-decoration: line-through; }
 table { border-collapse: collapse; border-spacing: 0;}
 a img { border: 0px;}
+a { color: #492914; } 
+a:visited { color: #6d442a; }
+td { padding: 2px 5px; } 
+
 
 /* SITE WIDE STYLES ----------------------------------- */ 
 body { line-height: 1.6; font-size: 15px; background-color: #cc8537; 
@@ -33,15 +37,16 @@ p { margin: 9px 0px; }
 
 #header { background: #324770; /*#3c3b3b; gray */ }
 #header .logo_container { background: #492914 url(/images/logo_background.png) repeat-y -45px; 
-  float: left; width: 800px;}
+  float: left; width: 1150px; height: 90px;}
 #header .logo_container img.logo { margin: 7px 25px 0px 10px; }
 #header .logo_container .main_nav { background: transparent url(/images/main_nav_background.png) no-repeat 120px 27px;
   height: 70px; padding: 15px 0px 0px 110px; margin-top: -25px;
 }
+#header .logo_container .main_nav { margin-left: 400px; margin-top: 0px;}
 #header .logo_container .main_nav li { display: inline; padding-left: 50px; } 
 
 #dashboard { margin: auto; padding: 15px; }
-.spread { overflow: hidden; } 
+.spread { overflow: hidden; }
 .page { width: 45%; float: left; margin-left: 1%; color: #333; }
 .page.left_page { margin-left: 0%;}
 .page .content { font-family: "Minion Pro", Georgia, "Book Antiqua", Garamond, "Century Schoolbook", "Bookman Old Style", serif;
@@ -50,7 +55,9 @@ p { margin: 9px 0px; }
 .page .header p {  text-indent: 15px; }
 .page .header h1 { font-size: 19px;}
 .page .header h1 .by, .by { font-size: 0.7em; font-weight: normal;} 
-.page .header h1 .author, .author { font-size: 0.8em; text-transform: uppercase;} 
+.page .header h1 .author, .author { font-size: 0.8em; text-transform: uppercase;}
+.page .header ul li { display: inline; margin: 0px 10px;}
+.page .header ul li form { display: inline ; }
 .page.right_page .header { text-align: right;}
 
 /* BOOK RESOURCE */
@@ -62,4 +69,5 @@ p { margin: 9px 0px; }
 .cover h1:nth-child(1) { font-family: "Minion Pro", Georgia, "Book Antiqua", Garamond, "Century Schoolbook", "Bookman Old Style", serif;
   font-size: 48px; 
 }
-.cover h2 {} 
+.cover h2 {}
+a.title { font-size: 22px; color: black;} 

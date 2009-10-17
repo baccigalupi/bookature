@@ -14,16 +14,14 @@ class BooksController < ApplicationController
   # GET /books/1.xml
   def show
     @book = Book.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @book }
-    end
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 )
   end
 
   # GET /books/new
   # GET /books/new.xml
-  def new
+  def new 
+    redirect_to books_path and return unless current_user 
+    
     @book = Book.new
 
     respond_to do |format|
@@ -35,12 +33,15 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.id
   end
 
   # POST /books
   # POST /books.xml
   def create
+    redirect_to books_path and return unless current_user 
     @book = Book.new(params[:book])
+    @book.owner_id = current_user.id
 
     respond_to do |format|
       if @book.save
@@ -58,7 +59,8 @@ class BooksController < ApplicationController
   # PUT /books/1.xml
   def update
     @book = Book.find(params[:id])
-
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.id
+  
     respond_to do |format|
       if @book.update_attributes(params[:book])
         flash[:notice] = 'Book was successfully updated.'
@@ -75,10 +77,11 @@ class BooksController < ApplicationController
   # DELETE /books/1.xml
   def destroy
     @book = Book.find(params[:id])
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.id
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to(books_url) }
+      format.html { redirect_to( books_url ) }
       format.xml  { head :ok }
     end
   end

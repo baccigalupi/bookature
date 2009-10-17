@@ -3,7 +3,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
 require 'spec/autorun'
-require 'spec/rails'
+require 'spec/rails' 
+require File.expand_path(File.dirname(__FILE__) + "/blueprint") # for machinist
 
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
@@ -43,5 +44,10 @@ Spec::Runner.configure do |config|
   #
   # == Notes
   # 
-  # For more information take a look at Spec::Runner::Configuration and Spec::Runner
+  # For more information take a look at Spec::Runner::Configuration and Spec::Runner  
+  config.before(:each) { Sham.reset } # for machinist  
+end
+
+def logger
+  RAILS_DEFAULT_LOGGER
 end
