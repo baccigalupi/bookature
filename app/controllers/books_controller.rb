@@ -33,7 +33,7 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
     @book = Book.find(params[:id])
-    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.id
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.owner_id
   end
 
   # POST /books
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
   # PUT /books/1.xml
   def update
     @book = Book.find(params[:id])
-    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.id
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.owner_id
   
     respond_to do |format|
       if @book.update_attributes(params[:book])
@@ -77,7 +77,7 @@ class BooksController < ApplicationController
   # DELETE /books/1.xml
   def destroy
     @book = Book.find(params[:id])
-    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.id
+    redirect_to book_page_path( :book_id => @book.id, :id => 1 ) and return unless current_user && current_user.id == @book.owner_id
     @book.destroy
 
     respond_to do |format|
