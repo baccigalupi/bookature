@@ -12,9 +12,10 @@ class Clearance::UsersController < ApplicationController
   def create
     @user = ::User.new params[:user]
     if @user.save
-      ClearanceMailer.deliver_confirmation @user
-      flash[:notice] = "You will receive an email within the next few minutes. " <<
-                       "It contains instructions for confirming your account."
+      @user.confirm_email!
+      # ClearanceMailer.deliver_confirmation @user
+      # flash[:notice] = "You will receive an email within the next few minutes. " <<
+      #                  "It contains instructions for confirming your account."
       redirect_to url_after_create
     else
       render :template => 'users/new'
